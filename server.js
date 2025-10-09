@@ -1,3 +1,4 @@
-// 3. Crie um projeto que contenha uma rota POST /soma e receba uma quantidade indefinida de números através do body e realize a soma dos valores: 
-// Verifique se os valores são numéricos antes de realizar o cálculo, ignore os não númericos, some os demais..
-// Utilize a função reduce, pesquise em fontes na internet a forma de utilizar.
+// 4. Crie um projeto com uma rota POST /usuarios que receba um JSON com:
+// nome, email e senha;
+// Nome deve ter no minimo 3 caracteres, email deve conter @ e senha no mínimo 4 caracteres
+// Salvar o  registro em um arquivo usuarios.json na raiz da aplicação (o arquivo deve ser criado através da codificação)
