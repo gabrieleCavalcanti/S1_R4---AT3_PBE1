@@ -10,7 +10,7 @@ async function validaNumeros(pNotas) {
 
     for (let index = 0; index < pNotas.length; index++) {
         if (isNaN(pNotas[index])) {
-            throw new Error("Valor inválido", error);
+            throw new Error("Valor inválido");
         }
     }
     return pNotas
