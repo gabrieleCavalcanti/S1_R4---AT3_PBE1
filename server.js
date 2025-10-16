@@ -9,8 +9,8 @@ app.use(express.json());
 async function validaNumeros(pNotas) {
 
     for (let index = 0; index < pNotas.length; index++) {
-        if (isNaN(pNotas[index])) {
-            throw new Error("Valor inválido");
+        if (typeof pNotas[index] !== "number") {
+            throw new Error("Nota inválida");
         }
     }
     return pNotas
