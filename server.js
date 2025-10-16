@@ -18,11 +18,9 @@ async function validaNumeros(pNotas) {
 
 async function soma(pNotas) {
     const notas = await validaNumeros(pNotas);
-    let resultado = 0;
-    for (let index = 0; index < notas.length; index++) {
-        resultado += notas[index]
-    }
-    return resultado
+    const soma = notas.reduce((acumulador, valorAtual) => acumulador + valorAtual, 0); //'0' é o valor inicial do acumulador
+    return soma
+
 }
 
 async function media(pNotas) {
@@ -42,7 +40,7 @@ app.post('/alunos', async (req, res) => {
         const mediaAluno = await media(notas);
         const situacao = mediaAluno > 6 ? "APROVADO" : "REPROVADO";
 
-         res.status(201).json({ nome, media: mediaAluno.toFixed(2), situacao });
+        res.status(201).json({ nome, media: mediaAluno.toFixed(2), situacao });
     } catch (error) {
         console.error(error);
         res.status(500).json({ message: 'Ocorreu um erro ao processar a solicitação', erro: error.message });
