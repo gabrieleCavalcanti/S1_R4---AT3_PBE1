@@ -13,25 +13,23 @@ async function validaNumeros(pNotas) {
             throw new Error("Nota inválida");
         }
     }
-    return pNotas
 }
 
 async function soma(pNotas) {
-    const notas = await validaNumeros(pNotas);
-    const soma = notas.reduce((acumulador, valorAtual) => acumulador + valorAtual, 0); //'0' é o valor inicial do acumulador
-    return soma
-
+    await validaNumeros(pNotas);
+    const soma = pNotas.reduce((acumulador, valorAtual) => acumulador + valorAtual, 0); //'0' é o valor inicial do acumulador
+    
+    return soma;
 }
 
 async function media(pNotas) {
     try {
         const resultado = await soma(pNotas);
-        mediaNotas = resultado / pNotas.length;
+        const mediaNotas = resultado / pNotas.length;
         return mediaNotas;
     } catch (error) {
         throw new Error(`Erro ao realizar a operação: ${error.message}`);
     }
-
 }
 
 app.post('/alunos', async (req, res) => {
