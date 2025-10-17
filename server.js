@@ -16,30 +16,27 @@ async function validaNome(nome) {
     if (!nome || nome.length < 3) {
         throw new Error('O nome deve ter no mínimo 3 caracteres.');
     }
-    return nome;
 }
 
 async function validaEmail(email) {
     if (!email || !email.includes('@')) {
         throw new Error('O email deve conter o caractere "@".');
     }
-    return email;
 }
 
 async function validaSenha(senha) {
     if (!senha || senha.length < 4) {
         throw new Error('A senha deve ter no mínimo 4 caracteres.');
     }
-    return senha;
 }
 
 
 app.post('/usuarios', async (req, res) => {
     try {
         const { nome, email, senha } = req.body;
-        const nomeUser = await validaNome(nome);
-        const emailUser = await validaEmail(email);
-        const senhaUser = await validaSenha(senha);
+        await validaNome(nome);
+        await validaEmail(email);
+        await validaSenha(senha);
         
         let usuarios =[];
 
@@ -47,7 +44,7 @@ app.post('/usuarios', async (req, res) => {
             usuarios = JSON.parse(fs.readFileSync(arquivoUsuarios, 'utf-8'));
         }
 
-        const novoUsuario = { nome: nomeUser, email: emailUser, senha: senhaUser };
+        const novoUsuario = { nome: nome, email: email, senha: senha };
         usuarios.push(novoUsuario);
 
         fs.writeFileSync(arquivoUsuarios, JSON.stringify(usuarios, null, 2), 'utf-8'); 
