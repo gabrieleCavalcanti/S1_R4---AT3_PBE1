@@ -14,14 +14,14 @@ async function validaNumeros(pNumeros) {
             listaNumeros.push(pNumeros[index]);
         }
     }
-    return listaNumeros
+    return listaNumeros;
 }
 
 async function soma(pNumeros) {
     try {
         const numeros = await validaNumeros(pNumeros);
         const soma = numeros.reduce((acumulador, valorAtual) => acumulador + valorAtual, 0); //'0' é o valor inicial do acumulador
-        return soma
+        return soma;
     } catch (error) {
         throw new Error(`Erro ao realizar a operação: ${error.message}`);
     }
